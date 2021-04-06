@@ -1,0 +1,11 @@
+.input-currency-value {
+    height: 48px;
+    margin: 8px;
+    border-style: none none solid none;
+    border-width: 1px;
+    font-size: 16px;
+
+    &:hover{
+        border-width: 2.5px;
+    }
+}
