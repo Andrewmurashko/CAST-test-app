@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { calcCurrencyValue } from '../utils/calcCurrencyValue';
 import Input from './Input';
 import SelectLabel from './SelectLabel';
 
 function CurrencyConverter() {
+  const {isLoaded} = useSelector(({ currenciesState }) => currenciesState);
   const [currenciesValues, setCurrenciesValues] = React.useState({
     myCurrencyRate: '',
     myCurrencyInputValue: '',
@@ -38,6 +40,7 @@ function CurrencyConverter() {
       <div className="content">
         <h2 className="content__title">Currencies converter</h2>
         <div className="content__currency-converter">
+          {isLoaded ? <>
           <SelectLabel
             inputLabel={'i have'}
             selectValue={currenciesValues.myCurrencyRate}
@@ -73,7 +76,7 @@ function CurrencyConverter() {
             selectValue={currenciesValues.wantToCurrencyRate}
             selectName={'wantToCurrencyRate'}
             onChange={onChangeSlectLabel}
-          />
+          /> </> : <div>Loading data</div>}
         </div>
       </div>
     </div>
